@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
-    private SharedPreferences myPreferenceRef;
-    private SharedPreferences.Editor myPreferenceEditor;
+
+    TextView TextView;
+    SharedPreferences Preferences;
+    Button Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,28 +22,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        myPreferenceRef = getPreferences(MODE_PRIVATE);
-        myPreferenceEditor = myPreferenceRef.edit();
-        TextView prefTextRef=new TextView(this);
-        prefTextRef=(TextView)findViewById(R.id.prefText);
-        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+
+
+        TextView = findViewById(R.id.TextView);
+        Preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
+        Button = findViewById(R.id.Button);
+        Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(Intent);
+            }
+        });
+
     }
 
-    public void savePref(View v){
-        // Get the text
-        EditText newPrefText=new EditText(this);
-        newPrefText=(EditText)findViewById(R.id.settingseditview);
-
-        // Store the new preference
-        myPreferenceEditor.putString("MyAppPreferenceString", newPrefText.getText().toString());
-        myPreferenceEditor.apply();
-
-        // Display the new preference
-        TextView prefTextRef=new TextView(this);
-        prefTextRef=(TextView)findViewById(R.id.prefText);
-        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
-
-        // Clear the EditText
-        newPrefText.setText("");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String name = Preferences.getString("name", "inget namn hittades");
+        TextView.setText(name);
     }
 }
