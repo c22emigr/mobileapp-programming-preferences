@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -13,8 +14,10 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     TextView TextView;
+
     SharedPreferences Preferences;
-    Button Button;
+
+    Button Buttonknapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView = findViewById(R.id.TextView);
         Preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
-        Button = findViewById(R.id.Button);
-        Button.setOnClickListener(new View.OnClickListener() {
-
+        Buttonknapp = findViewById(R.id.Button1);
+        Buttonknapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent Intent = new Intent(MainActivity.this, MainActivity2.class);
