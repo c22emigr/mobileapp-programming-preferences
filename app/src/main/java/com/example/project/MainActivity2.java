@@ -14,7 +14,7 @@ public class MainActivity2 extends AppCompatActivity {
     SharedPreferences Preferences;
     EditText EditText;
     Button Back;
-    Button Save;
+    Button Button;
 
 
     @Override
@@ -23,7 +23,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         EditText = findViewById(R.id.EditText);
-        Save = findViewById(R.id.Save);
+        Button = findViewById(R.id.Save);
         Preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
         Back = findViewById(R.id.Back);
         Back.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +33,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
-        Save.setOnClickListener(new View.OnClickListener() {
+        Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = Preferences.edit();
