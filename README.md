@@ -1,9 +1,49 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+För att göra denna uppgiften så kunde stora delar från screens-uppgiften användas då det i princip var samma kod där en knapp får en 
+ny intent som sedan tar oss till vår andra activity. Detta är samma som från förra uppgiften då vi sätter en onclicklistener på 
+vår knapp som sedan startar en ny intent som tar oss till vår andra aktivitet.
 
-_Du kan ta bort all text som finns sedan tidigare_.
+            Buttonknapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(Intent);
+            }
+        });
+
+Skillnaden är att vi i denna uppgift inte bara har en string och en int som ska skickas över utan istället så har vi en edittext
+där vi kan skriva in en egen text som sedan sparas om man klickar på knappen save.
+
+            Back = findViewById(R.id.Back);
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+För att få edittexten att fungera så måste vi göra stringen till edittext samt så gav jag den ett defaultvärde så att det finns en
+placeholder text när man först startar appen.
+
+        @Override
+    protected void onResume() {
+        super.onResume();
+        String name = Preferences.getString("EditText", "inget namn hittades");
+        TextView.setText(name);
+    }
+
+På andra sidan så har jag en edittext där man kan skriva in en egen text som man sedan kan spara med hjälp av save-knappen.
+
+![img.png](img.png)
+
+Denna text kommer sedan att visas på den första sidan om vi har gått in i edittext och sparat en egen "custom-text" då den 
+variabeln skickas till vår andra acitivity.
+
+![img_1.png](img_1.png)
+
+
 
 ## Följande grundsyn gäller dugga-svar:
 
