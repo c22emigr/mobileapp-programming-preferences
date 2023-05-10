@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String name = Preferences.getString("name", "inget namn hittades");
+        String name = Preferences.getString("EditText", "inget namn hittades");
         TextView.setText(name);
     }
 }
